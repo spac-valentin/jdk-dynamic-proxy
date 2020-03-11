@@ -15,7 +15,7 @@ public class ProxyFactory {
     private  List<MyCustomProxy> beanRegistry;
 
     public ProxyFactory(Package packageToLookup) {
-        Reflections reflections = new Reflections(packageToLookup);
+        Reflections reflections = new Reflections(packageToLookup.getName());
         Set<Class<?>> transactionalServiceClasses = reflections.getTypesAnnotatedWith(TransactionalService.class);
 
         List<?> beans = instantiateBeans(transactionalServiceClasses);
