@@ -38,7 +38,7 @@ public class ProxyFactory {
      */
     private MyCustomProxy createProxy(Object bean) {
         InvocationHandler handler = new MyTransactionInvocationHandler(bean);
-        Object proxyObj = Proxy.newProxyInstance(ProxyApp.class.getClassLoader(), bean.getClass().getInterfaces(), handler);
+        Object proxyObj = Proxy.newProxyInstance(bean.getClass().getClassLoader(), bean.getClass().getInterfaces(), handler);
 
         return new MyCustomProxy(Arrays.asList(bean.getClass().getInterfaces()), proxyObj);
     }
